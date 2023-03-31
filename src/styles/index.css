@@ -1,9 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Base */
+@import "./base.css";
 
-@layer base {
-  main {
-    @apply mt-40;
-  }
-}
+/* Custom components */
+@import "./components/typography.css";
+@import "./components/navbar.css";
+
+/* Custom utilities */
