@@ -1,7 +1,12 @@
 import Layout from "./components/Layout";
+import StateProvider from "./contexts/state.context";
 
 function App() {
-  return <Layout />;
+  return (
+    <StateProvider>
+      <Layout />
+    </StateProvider>
+  );
 }
 
 export default App;
