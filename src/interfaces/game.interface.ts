@@ -1,7 +1,9 @@
 import { IPlayer } from "./player.interface";
 
 export interface IGame {
-  id: number;
-  players: IPlayer[];
+  id: string;
+  players: Map<string, IPlayer>;
   numbers: number[];
+  pastNumbers: number[];
+  turn: number;
 }
