@@ -1,29 +1,53 @@
 @layer components {
+  .font-title {
+    line-height: auto;
+    @apply font-bold text-black;
+  }
+
   h1,
-  .font-title1 {
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 56px;
+  .heading-1 {
+    font-size: 3.5rem;
+    @apply font-title;
   }
 
   h2,
-  .font-title2 {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 36px;
+  .heading-2 {
+    font-size: 3rem;
+    @apply font-title;
   }
 
   h3,
-  .font-title3 {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 32px;
+  .heading-3 {
+    font-size: 2.5rem;
+    @apply font-title;
   }
 
-  .font-small {
-    font-size: 0.875rem;
+  h4,
+  .heading-4 {
+    font-size: 2rem;
+    @apply font-title;
   }
-  .font-large {
-    font-size: 1.125rem;
+
+  .font-base {
+    line-height: auto;
+    @apply font-medium text-gray-dark;
+  }
+
+  h5,
+  .subheading {
+    font-size: 1.5rem;
+    @apply font-base;
+  }
+
+  p {
+    font-size: 1rem;
+    @apply font-base;
+  }
+
+  small,
+  .font-small {
+    font-size: 0.75rem;
+    line-height: auto;
+    @apply text-gray font-medium;
   }
 }

@@ -1,0 +1,9 @@
+@layer components {
+  .btn {
+    @apply rounded-lg w-auto px-8 py-3 leading-[15px] border border-solid border-black flex items-center justify-center gap-2.5;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-light;
+  }
+}

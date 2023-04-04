@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    font-size: 1rem;
-    box-sizing: border-box;
+  :root {
+    --color-success: 33 255 174;
+    --color-warning: 255 239 157;
+    --color-danger: 255 194 194;
   }
 
   html,

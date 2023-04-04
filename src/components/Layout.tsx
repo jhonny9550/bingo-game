@@ -1,17 +1,25 @@
+import { useState } from "react";
+import Button from "./Button";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
+import Modal from "./Modal";
 
 const Layout = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
       <NavBar />
       <main>
-        <h1>Bingo Game</h1>
-        <h2>Title 2</h2>
-        <h3>Title 3</h3>
-        <p className="font-large">Paragraph large</p>
-        <p>Paragraph</p>
-        <p className="font-small">Paragraph small</p>
+        <Modal open={modalOpen} onClose={setModalOpen.bind(null, false)}>
+          <div className="px-6 py-8">
+            <h3>Create new player</h3>
+            <input type="text" placeholder="Name" />
+            <Button>Save</Button>
+          </div>
+        </Modal>
+        <div className="container py-8">
+          <Button onClick={() => setModalOpen((v) => !v)}>Continue</Button>
+        </div>
       </main>
       <Footer />
     </>

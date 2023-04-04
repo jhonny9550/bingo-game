@@ -1,0 +1,13 @@
+@layer components {
+  .modal {
+    @apply absolute inset-0 flex justify-center items-center z-30;
+  }
+
+  .modal.backdrop {
+    @apply bg-gray-500 bg-opacity-70;
+  }
+
+  .modal__content {
+    @apply bg-white rounded-lg;
+  }
+}

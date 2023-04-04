@@ -4,5 +4,7 @@
 /* Custom components */
 @import "./components/typography.css";
 @import "./components/navbar.css";
+@import "./components/button.css";
+@import "./components/modal.css";
 
 /* Custom utilities */
