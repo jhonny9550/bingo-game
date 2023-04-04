@@ -1,6 +1,5 @@
 @layer components {
   .font-title {
-    line-height: auto;
     @apply font-bold text-black;
   }
 
@@ -29,7 +28,6 @@
   }
 
   .font-base {
-    line-height: auto;
     @apply font-medium text-gray-dark;
   }
 
@@ -47,7 +45,6 @@
   small,
   .font-small {
     font-size: 0.75rem;
-    line-height: auto;
     @apply text-gray font-medium;
   }
 }

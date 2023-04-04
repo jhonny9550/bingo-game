@@ -6,4 +6,20 @@
   .btn-primary {
     @apply bg-primary text-white hover:bg-primary-light;
   }
+
+  .btn-success {
+    @apply bg-success text-black hover:bg-success-light;
+  }
+
+  .btn-warning {
+    @apply bg-warning text-black hover:bg-warning-light;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-black hover:bg-danger-light;
+  }
+
+  .btn-white {
+    @apply bg-white text-black hover:bg-gray-light;
+  }
 }

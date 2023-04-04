@@ -1,8 +1,12 @@
 import clsx from "clsx";
 import React from "react";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 
-export type ButtonColor = "primary" | "secondary" | "warning" | "danger";
+export type ButtonColor =
+  | "primary"
+  | "success"
+  | "warning"
+  | "danger"
+  | "white";
 
 export type ButtonProps = {
   children?: React.ReactNode;
@@ -16,9 +20,10 @@ export type ButtonProps = {
 
 const colors: Record<ButtonColor, string> = {
   primary: "btn-primary",
-  secondary: "btn-secondary",
+  success: "btn-success",
   warning: "btn-warning",
   danger: "btn-danger",
+  white: "btn-white",
 };
 
 const Button: React.FC<ButtonProps> = ({ color = "primary", ...props }) => {
@@ -29,8 +34,9 @@ const Button: React.FC<ButtonProps> = ({ color = "primary", ...props }) => {
       onClick={props.onClick}
       disabled={props.disabled}
     >
-      <ArrowRightIcon className="h-5 w-5" />
+      {props.iconLeft}
       <p className="text-inherit">{props.children}</p>
+      {props.iconRight}
     </button>
   );
 };
