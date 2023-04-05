@@ -1,45 +1,41 @@
 @layer components {
-  .font-title {
+  .font-title,
+  :is(h1, h2, h3, h4) {
     @apply font-bold text-black;
   }
 
   h1,
   .heading-1 {
     font-size: 3.5rem;
-    @apply font-title;
   }
 
   h2,
   .heading-2 {
     font-size: 3rem;
-    @apply font-title;
   }
 
   h3,
   .heading-3 {
     font-size: 2.5rem;
-    @apply font-title;
   }
 
   h4,
   .heading-4 {
     font-size: 2rem;
-    @apply font-title;
   }
 
-  .font-base {
+  .font-base,
+  :is(h5, p) {
     @apply font-medium text-gray-dark;
   }
 
   h5,
   .subheading {
     font-size: 1.5rem;
-    @apply font-base;
   }
 
   p {
     font-size: 1rem;
-    @apply font-base;
   }
 
   small,

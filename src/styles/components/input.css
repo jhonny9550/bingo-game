@@ -1,0 +1,31 @@
+@layer components {
+  .input {
+    @apply rounded-lg border border-solid border-black overflow-hidden flex items-stretch max-w-[350px] text-xs;
+  }
+
+  .input-primary {
+    @apply border-primary bg-primary border-2;
+  }
+
+  .input-success {
+    @apply border-success bg-success border-2;
+  }
+
+  .input-warning {
+    @apply border-warning bg-warning border-2;
+  }
+
+  .input-danger {
+    @apply border-danger bg-danger border-2;
+  }
+
+  .input__inner {
+    all: unset;
+    @apply pt-2 pb-2.5 px-3 font-semibold flex-grow bg-white
+    placeholder:text-gray placeholder:font-semibold;
+  }
+
+  .input__adornment {
+    @apply px-[5px] flex items-center bg-inherit;
+  }
+}
