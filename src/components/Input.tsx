@@ -67,6 +67,7 @@ const Input: React.FC<InputProps> = ({ state = "default", ...props }) => {
         onChange={handleInputChange}
         value={value}
         placeholder={props.placeholder}
+        disabled={props.disabled}
       />
       {!!endAdornment && (
         <div

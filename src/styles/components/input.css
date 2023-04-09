@@ -21,8 +21,12 @@
 
   .input__inner {
     all: unset;
-    @apply pt-2 pb-2.5 px-3 font-semibold flex-grow bg-white
+    @apply pt-2 pb-2.5 px-3 font-semibold flex-grow bg-white font-semibold
     placeholder:text-gray placeholder:font-semibold;
+  }
+
+  .input__inner:disabled {
+    @apply bg-gray-light text-gray-dark;
   }
 
   .input__adornment {

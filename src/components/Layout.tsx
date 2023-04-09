@@ -29,6 +29,12 @@ const Layout = () => {
             value="My name"
             placeholder="Your full name"
             classes={{ root: "mt-4" }}
+            disabled
+          />
+          <Input
+            value="My name"
+            placeholder="Your full name"
+            classes={{ root: "mt-4" }}
             state="focus"
           />
           <Input
