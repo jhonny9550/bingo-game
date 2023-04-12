@@ -16,6 +16,7 @@ export type ButtonProps = {
   iconRight?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
+  type?: "submit" | "button" | "reset";
 };
 
 const colors: Record<ButtonColor, string> = {
@@ -30,6 +31,7 @@ const Button: React.FC<ButtonProps> = ({ color = "primary", ...props }) => {
   const colorClassName = colors[color];
   return (
     <button
+      type={props.type}
       className={clsx(["btn", colorClassName, props.className])}
       onClick={props.onClick}
       disabled={props.disabled}

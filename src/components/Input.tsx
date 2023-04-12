@@ -20,7 +20,7 @@ export type InputProps = {
   placeholder?: string;
   rightIcon?: React.ReactNode;
   state?: InputState;
-  value: any;
+  value?: any;
 };
 
 const colors: Record<InputState, string> = {

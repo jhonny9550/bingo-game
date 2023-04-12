@@ -1,55 +1,34 @@
-import { useState } from "react";
-import Button from "./Button";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import Modal from "./Modal";
-import Input from "./Input";
-import { BoltIcon } from "@heroicons/react/24/outline";
+import DialogInput from "./DialogInput";
+import { useToggle } from "../hooks/toggle.hook";
+import { useCallback, useState } from "react";
 
 const Layout = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, toggleModalOpen] = useToggle(true);
+  const [newPlayer, setNewPlayer] = useState("");
+
+  const handleModalDismiss = useCallback((value?: any) => {
+    if (value) {
+      setNewPlayer(value);
+    }
+    toggleModalOpen();
+  }, []);
+
   return (
     <>
       <NavBar />
       <main>
-        <Modal open={modalOpen} onClose={setModalOpen.bind(null, false)}>
-          <div className="px-6 py-8">
-            <h3>Create new player</h3>
-            <input type="text" placeholder="Name" />
-            <Button>Save</Button>
-          </div>
+        <Modal open={modalOpen}>
+          <DialogInput
+            title="Add a new player"
+            description="Simply input the name of the player to start playing Bingo!"
+            handleCancel={handleModalDismiss}
+            handleConfirm={handleModalDismiss}
+          />
         </Modal>
-        <div className="container">
-          <Input
-            value="My name"
-            placeholder="Your full name"
-            classes={{ root: "mt-4" }}
-          />
-          <Input
-            value="My name"
-            placeholder="Your full name"
-            classes={{ root: "mt-4" }}
-            disabled
-          />
-          <Input
-            value="My name"
-            placeholder="Your full name"
-            classes={{ root: "mt-4" }}
-            state="focus"
-          />
-          <Input
-            value="My name"
-            placeholder="Your full name"
-            classes={{ root: "mt-4" }}
-            state="success"
-          />
-          <Input
-            value="My name"
-            placeholder="Your full name"
-            classes={{ root: "mt-4" }}
-            state="error"
-          />
-        </div>
+        <p>New player is: {newPlayer}</p>
       </main>
       <Footer />
     </>

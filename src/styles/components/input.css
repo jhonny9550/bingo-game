@@ -21,7 +21,7 @@
 
   .input__inner {
     all: unset;
-    @apply pt-2 pb-2.5 px-3 font-semibold flex-grow bg-white font-semibold
+    @apply pt-2 pb-2.5 px-3 font-semibold flex-grow bg-white
     placeholder:text-gray placeholder:font-semibold;
   }
 
