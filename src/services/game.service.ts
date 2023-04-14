@@ -2,7 +2,7 @@ import { IGame } from "../interfaces/game.interface";
 import { IPlayer } from "../interfaces/player.interface";
 import { randomId, randomNumber } from "../utils/random";
 
-export class Game implements IGame {
+export default class Game implements IGame {
   public id: string;
   public players: Map<string, IPlayer>;
   public numbers: number[];
@@ -12,7 +12,7 @@ export class Game implements IGame {
   constructor() {
     this.id = randomId();
     this.players = new Map();
-    this.numbers = [...Array(75).keys()];
+    this.numbers = Array.from({ length: 75 }, (_, i) => i + 1);
     this.pastNumbers = [];
     this.turn = 0;
   }
