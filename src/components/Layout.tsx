@@ -1,8 +1,8 @@
-import React from "react";
+import { PropsWithChildren } from "react";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 
-const Layout: React.FC<{ children: React.ReactNode }> = (props) => {
+const Layout = (props: PropsWithChildren) => {
   return (
     <>
       <NavBar />

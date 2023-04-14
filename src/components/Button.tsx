@@ -1,17 +1,24 @@
 import clsx from "clsx";
-import React from "react";
+import React, { PropsWithChildren } from "react";
+import { Link } from "react-router-dom";
 
 export type ButtonColor =
   | "primary"
-  | "success"
+  | "secondary"
+  | "accent"
+  | "neutral"
+  | "info"
   | "warning"
-  | "danger"
-  | "white";
+  | "error"
+  | "ghost";
 
-export type ButtonFill = "clear" | "outlined" | "solid";
+export type ButtonSize = "large" | "normal" | "small" | "tiny";
+
+export type ButtonShape = "default" | "square" | "circle";
+
+export type ButtonExpand = "default" | "block" | "wide";
 
 export type ButtonProps = {
-  children?: React.ReactNode;
   className?: string;
   color?: ButtonColor;
   iconLeft?: React.ReactNode;
@@ -20,35 +27,72 @@ export type ButtonProps = {
   disabled?: boolean;
   type?: "submit" | "button" | "reset";
   hidden?: boolean;
-  fill?: ButtonFill;
+  outline?: boolean;
+  size?: ButtonSize;
+  shape?: ButtonShape;
+  expand?: ButtonExpand;
+  loading?: boolean;
+  to?: string;
 };
 
 const colors: Record<ButtonColor, string> = {
   primary: "btn-primary",
-  success: "btn-success",
+  secondary: "btn-secondary",
+  accent: "btn-accent",
+  neutral: "btn-neutral",
+  info: "btn-info",
   warning: "btn-warning",
-  danger: "btn-danger",
-  white: "btn-white",
+  error: "btn-error",
+  ghost: "btn-ghost",
 };
 
-const fills: Record<ButtonFill, string> = {
-  clear: "btn-clear",
-  solid: "btn-solid",
-  outlined: "btn-outlined",
+const sizes: Record<ButtonSize, string> = {
+  large: "btn-lg",
+  normal: "",
+  small: "btn-sm",
+  tiny: "btn-xs",
 };
 
-const Button: React.FC<ButtonProps> = ({
+const shapes: Record<ButtonShape, string> = {
+  default: "",
+  square: "btn-square",
+  circle: "btn-circle",
+};
+
+const expands: Record<ButtonExpand, string> = {
+  default: "",
+  wide: "btn-wide",
+  block: "btn-block",
+};
+
+const Button = ({
   color = "primary",
-  fill = "solid",
+  size = "normal",
+  shape = "default",
+  expand = "default",
   ...props
-}) => {
+}: PropsWithChildren<ButtonProps>) => {
   const colorClassName = colors[color];
-  const fillClassName = fills[fill];
+  const sizeClassName = sizes[size];
+  const shapeClassName = shapes[shape];
+  const expandClassName = expands[expand];
 
-  return (
+  const renderButton = (
     <button
       type={props.type}
-      className={clsx(["btn", colorClassName, fillClassName, props.className])}
+      className={clsx([
+        "btn",
+        colorClassName,
+        sizeClassName,
+        shapeClassName,
+        expandClassName,
+        {
+          "btn-outline": props.outline,
+          loading: props.loading,
+          "gap-2": props.iconLeft || props.iconRight,
+        },
+        props.className,
+      ])}
       onClick={props.onClick}
       disabled={props.disabled}
       hidden={props.hidden}
@@ -58,6 +102,12 @@ const Button: React.FC<ButtonProps> = ({
       {props.iconRight}
     </button>
   );
+
+  if (props.to) {
+    return <Link to={props.to}>{renderButton}</Link>;
+  }
+
+  return renderButton;
 };
 
 export default Button;

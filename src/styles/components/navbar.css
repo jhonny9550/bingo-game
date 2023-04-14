@@ -1,9 +1,0 @@
-@layer components {
-  .navbar {
-    @apply flex items-center h-20 px-8 w-full fixed top-0 inset-x-0 z-20 drop-shadow-md;
-  }
-
-  .navbar__button {
-    @apply text-indigo-500 py-4 px-2 hover:text-indigo-200;
-  }
-}

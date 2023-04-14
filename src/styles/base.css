@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-success: 33 255 174;
-    --color-warning: 255 239 157;
-    --color-danger: 255 194 194;
-  }
-
   html,
   body,
   #root {

@@ -41,13 +41,19 @@ const PlayersForm = () => {
             placeholder="Player name"
             value={p.name}
             onChange={handlePlayerNameChange.bind(null, i)}
-            classes={{ root: clsx(["w-full", { "mt-2": i !== 0 }]) }}
+            className={clsx(["w-full", { "mt-2": i !== 0 }])}
           />
           {playerNames.length > 1 && (
-            <TrashIcon
-              className="h-5 w-5 bg-red-100 text-red-500 rounded-full cursor-pointer ml-2"
+            <Button
+              shape="circle"
+              color="error"
+              className="ml-2"
               onClick={handleRemovePlayer.bind(null, i)}
-            />
+              size="small"
+              outline
+            >
+              <TrashIcon className="h-5 w-5" />
+            </Button>
           )}
         </div>
       ))}
@@ -55,8 +61,7 @@ const PlayersForm = () => {
         <Button
           type="button"
           className="mt-4"
-          color="primary"
-          fill="clear"
+          color="ghost"
           iconLeft={<PlusCircleIcon className="h-5 w-5" />}
           onClick={handleAddNewPlayer}
         >

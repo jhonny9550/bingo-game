@@ -45,7 +45,7 @@ const DialogInput: React.FC<DialogInputProps> = (props) => {
         )}
         <Input
           placeholder="Player name"
-          classes={{ root: "mt-4 max-w-full" }}
+          className="mt-4 max-w-full"
           onChange={handleInputChange}
           value={value}
         />
@@ -63,7 +63,7 @@ const DialogInput: React.FC<DialogInputProps> = (props) => {
         >
           {props.confirmButtonText || "Save"}
         </Button>
-        <Button type="button" color="white" onClick={props.handleCancel}>
+        <Button type="button" color="ghost" onClick={props.handleCancel}>
           {props.cancelButtonText || "Cancel"}
         </Button>
       </div>

@@ -1,20 +1,12 @@
-import React, { useCallback, useContext } from "react";
+import React from "react";
+import Button from "./Button";
 
-const NavButton: React.FC<{
-  children: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}> = (props) => {
+const NavBar: React.FC = () => {
   return (
-    <button className="navbar__button" onClick={props.onClick}>
-      {props.children}
-    </button>
-  );
-};
-
-const NavBar = () => {
-  return (
-    <nav className="navbar">
-      <h3>Bingo Game</h3>
+    <nav className="navbar bg-primary text-primary-content fixed">
+      <Button color="ghost" className="normal-case text-xl">
+        Bingo
+      </Button>
     </nav>
   );
 };
