@@ -4,6 +4,6 @@
   }
 
   .navbar__button {
-    @apply text-primary py-4 px-2 hover:text-primary-light;
+    @apply text-indigo-500 py-4 px-2 hover:text-indigo-200;
   }
 }

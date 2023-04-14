@@ -4,29 +4,29 @@
   }
 
   .input-primary {
-    @apply border-primary bg-primary border-2;
+    @apply border-indigo-500 bg-indigo-500 border-2;
   }
 
   .input-success {
-    @apply border-success bg-success border-2;
+    @apply border-green-500 bg-green-500 border-2;
   }
 
   .input-warning {
-    @apply border-warning bg-warning border-2;
+    @apply border-yellow-500 bg-yellow-500 border-2;
   }
 
   .input-danger {
-    @apply border-danger bg-danger border-2;
+    @apply border-red-500 bg-red-500 border-2;
   }
 
   .input__inner {
     all: unset;
     @apply pt-2 pb-2.5 px-3 font-semibold flex-grow bg-white
-    placeholder:text-gray placeholder:font-semibold;
+    placeholder:text-gray-500 placeholder:font-semibold;
   }
 
   .input__inner:disabled {
-    @apply bg-gray-light text-gray-dark;
+    @apply bg-gray-200 text-gray-700;
   }
 
   .input__adornment {

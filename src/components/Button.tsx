@@ -8,6 +8,8 @@ export type ButtonColor =
   | "danger"
   | "white";
 
+export type ButtonFill = "clear" | "outlined" | "solid";
+
 export type ButtonProps = {
   children?: React.ReactNode;
   className?: string;
@@ -17,6 +19,8 @@ export type ButtonProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   type?: "submit" | "button" | "reset";
+  hidden?: boolean;
+  fill?: ButtonFill;
 };
 
 const colors: Record<ButtonColor, string> = {
@@ -27,14 +31,27 @@ const colors: Record<ButtonColor, string> = {
   white: "btn-white",
 };
 
-const Button: React.FC<ButtonProps> = ({ color = "primary", ...props }) => {
+const fills: Record<ButtonFill, string> = {
+  clear: "btn-clear",
+  solid: "btn-solid",
+  outlined: "btn-outlined",
+};
+
+const Button: React.FC<ButtonProps> = ({
+  color = "primary",
+  fill = "solid",
+  ...props
+}) => {
   const colorClassName = colors[color];
+  const fillClassName = fills[fill];
+
   return (
     <button
       type={props.type}
-      className={clsx(["btn", colorClassName, props.className])}
+      className={clsx(["btn", colorClassName, fillClassName, props.className])}
       onClick={props.onClick}
       disabled={props.disabled}
+      hidden={props.hidden}
     >
       {props.iconLeft}
       <p className="text-inherit">{props.children}</p>
