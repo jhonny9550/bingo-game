@@ -1,15 +1,21 @@
-import { RouterProvider } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import StateProvider from "./contexts/state.context";
-import router from "./router/Router";
+import NewGamePage from "./pages/NewGamePage";
+import GamePage from "./pages/GamePage";
 
 function App() {
   return (
-    <StateProvider>
-      <Layout>
-        <RouterProvider router={router} />
-      </Layout>
-    </StateProvider>
+    <BrowserRouter>
+      <StateProvider>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<NewGamePage />} />
+            <Route path="/game" element={<GamePage />} />
+          </Route>
+        </Routes>
+      </StateProvider>
+    </BrowserRouter>
   );
 }
 

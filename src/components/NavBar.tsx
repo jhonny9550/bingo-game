@@ -3,8 +3,8 @@ import Button from "./Button";
 
 const NavBar: React.FC = () => {
   return (
-    <nav className="navbar bg-primary text-primary-content fixed">
-      <Button color="ghost" className="normal-case text-xl">
+    <nav className="navbar bg-primary text-primary-content fixed z-30">
+      <Button color="ghost" to="/">
         Bingo
       </Button>
     </nav>

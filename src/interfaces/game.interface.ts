@@ -6,4 +6,5 @@ export interface IGame {
   numbers: number[];
   pastNumbers: number[];
   turn: number;
+  currentNumber?: number;
 }

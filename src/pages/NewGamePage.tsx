@@ -7,21 +7,27 @@ import { StateContext } from "../contexts/state.context";
 import Game from "../services/game.service";
 import { ActionTypes } from "../interfaces/state.interface";
 import Table from "../services/table.service";
+import { useNavigate } from "react-router-dom";
 
 const NewGamePage = () => {
   const [showNewGameBtn, toggleShowNewGameBtn] = useToggle(true);
-  const { state, dispatch } = useContext(StateContext);
+  const { dispatch } = useContext(StateContext);
+  const navigate = useNavigate();
 
-  const handleSubmitPlayers = useCallback((players: IPlayer[]) => {
-    const game = new Game();
-    const playerMap = new Map<string, IPlayer>();
-    players.forEach((player) => {
-      player.tables = [new Table()];
-      playerMap.set(player.id, player);
-    });
-    game.players = playerMap;
-    dispatch({ type: ActionTypes.SET_CURRENT_GAME, game });
-  }, []);
+  const handleSubmitPlayers = useCallback(
+    (players: IPlayer[]) => {
+      const game = new Game();
+      const playerMap = new Map<string, IPlayer>();
+      players.forEach((player) => {
+        player.tables = [new Table()];
+        playerMap.set(player.id, player);
+      });
+      game.players = playerMap;
+      dispatch({ type: ActionTypes.SET_CURRENT_GAME, game });
+      navigate("/game");
+    },
+    [navigate]
+  );
 
   return (
     <div className="flex items-center justify-center h-full">

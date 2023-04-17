@@ -8,13 +8,14 @@ export default class Game implements IGame {
   public numbers: number[];
   public pastNumbers: number[];
   public turn: number;
+  public currentNumber?: number | undefined;
 
   constructor() {
     this.id = randomId();
     this.players = new Map();
     this.numbers = Array.from({ length: 75 }, (_, i) => i + 1);
     this.pastNumbers = [];
-    this.turn = 0;
+    this.turn = 1;
   }
 
   addPlayer(player: IPlayer) {
