@@ -22,7 +22,12 @@ const GamePage = () => {
           turn={state.currentGame.turn}
         />
       </div>
-      <div className="flex items-center justify-center gap-10 mt-8">
+      <div
+        className="
+        flex flex-col items-center justify-center gap-10 mt-8
+        sm:flex-row sm:flex-wrap
+      "
+      >
         {playersList.map((player) => (
           <PlayerTable
             key={player.id}
