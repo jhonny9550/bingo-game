@@ -5,13 +5,17 @@ import GameStatus from "../components/GameStatus";
 import PlayerTable from "../components/PlayerTable";
 import Button from "../components/Button";
 import { ActionTypes } from "../interfaces/state.interface";
+import { randomNumber } from "../utils/random";
 
 const GamePage = () => {
   const { state, dispatch } = useContext(StateContext);
 
   const handleNextTurn = useCallback(() => {
-    dispatch({ type: ActionTypes.START_NEXT_TURN });
-  }, []);
+    const availableNumbers = [...state.numbers];
+    const index = randomNumber(0, availableNumbers.length);
+    const selectedNumber = availableNumbers.splice(index, 1)[0];
+    dispatch({ type: ActionTypes.START_NEXT_TURN, selectedNumber });
+  }, [state]);
 
   if (state.players.size === 0) {
     return <Navigate to="/" />;
