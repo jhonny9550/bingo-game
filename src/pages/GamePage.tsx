@@ -1,26 +1,28 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { StateContext } from "../contexts/state.context";
 import { Navigate } from "react-router-dom";
 import GameStatus from "../components/GameStatus";
 import PlayerTable from "../components/PlayerTable";
 import Button from "../components/Button";
+import { ActionTypes } from "../interfaces/state.interface";
 
 const GamePage = () => {
-  const { state } = useContext(StateContext);
+  const { state, dispatch } = useContext(StateContext);
 
-  if (!state.currentGame) {
+  const handleNextTurn = useCallback(() => {
+    dispatch({ type: ActionTypes.START_NEXT_TURN });
+  }, []);
+
+  if (state.players.size === 0) {
     return <Navigate to="/" />;
   }
 
-  const playersList = Array.from(state.currentGame.players.values());
+  const playersList = Array.from(state.players.values());
 
   return (
     <>
       <div className="container flex justify-center">
-        <GameStatus
-          displayNumber={state.currentGame.currentNumber}
-          turn={state.currentGame.turn}
-        />
+        <GameStatus displayNumber={state.currentNumber} turn={state.turn} />
       </div>
       <div
         className="
@@ -37,7 +39,9 @@ const GamePage = () => {
         ))}
       </div>
       <div className="text-center mt-8">
-        <Button color="primary">Next number!</Button>
+        <Button color="primary" onClick={handleNextTurn}>
+          Next number!
+        </Button>
       </div>
     </>
   );

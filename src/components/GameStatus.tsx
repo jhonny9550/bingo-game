@@ -9,12 +9,10 @@ const GameStatus = (props: GameStatusProps) => {
       <div className="stat">
         <div className="stat-title">Turn #</div>
         <div className="stat-value mx-auto">{props.turn}</div>
-        {/* <div className="stat-desc">21% more than last month</div> */}
       </div>
       <div className="stat">
         <div className="stat-title">Current number</div>
         <div className="stat-value mx-auto">{props.displayNumber}</div>
-        {/* <div className="stat-desc">21% more than last month</div> */}
       </div>
     </div>
   );
