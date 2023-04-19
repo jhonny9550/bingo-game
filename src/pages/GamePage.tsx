@@ -24,30 +24,49 @@ const GamePage = () => {
   const playersList = Array.from(state.players.values());
 
   return (
-    <>
-      <div className="container flex justify-center">
-        <GameStatus displayNumber={state.currentNumber} turn={state.turn} />
-      </div>
-      <div
-        className="
+    <div className="container py-8">
+      <div className="flex">
+        <div>
+          <h5>Past numbers</h5>
+          <div className="flex flex-col max-h-[600px] overflow-y-scroll">
+            {state.pastNumbers.map((n) => (
+              <div
+                className="px-6 py-4 border border-slate-100 font-extrabold leading-10 text-center"
+                key={`past-number-${n}`}
+              >
+                {n}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex-grow">
+          <div className="flex justify-center">
+            <GameStatus displayNumber={state.currentNumber} turn={state.turn} />
+          </div>
+          <div
+            className="
         flex flex-col items-center justify-center gap-10 mt-8
         sm:flex-row sm:flex-wrap
       "
-      >
-        {playersList.map((player) => (
-          <PlayerTable
-            key={player.id}
-            name={player.name}
-            table={player.tables[0]}
-          />
-        ))}
+          >
+            {playersList.map((player) => (
+              <PlayerTable
+                crossedNumbers={state.pastNumbers}
+                currentNumber={state.currentNumber}
+                key={player.id}
+                name={player.name}
+                table={player.tables[0]}
+              />
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Button color="primary" onClick={handleNextTurn}>
+              Next number!
+            </Button>
+          </div>
+        </div>
       </div>
-      <div className="text-center mt-8">
-        <Button color="primary" onClick={handleNextTurn}>
-          Next number!
-        </Button>
-      </div>
-    </>
+    </div>
   );
 };
 

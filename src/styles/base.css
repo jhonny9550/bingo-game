@@ -10,6 +10,6 @@
   }
 
   main {
-    @apply pt-20 relative h-full;
+    @apply pt-16 relative h-full;
   }
 }

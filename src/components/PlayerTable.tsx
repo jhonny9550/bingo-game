@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { PropsWithChildren } from "react";
 import { ITable } from "../interfaces/table.interface";
-import { FaceSmileIcon } from "@heroicons/react/24/outline";
+import { FaceSmileIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 type WithClassName = { className?: string };
 
@@ -31,6 +31,8 @@ const TableCol = ({
 type PlayerTableProps = {
   name: string;
   table: ITable;
+  crossedNumbers: number[];
+  currentNumber?: number;
 };
 
 const BINGO_SPELL_CHARS = "BINGO";
@@ -53,11 +55,25 @@ const PlayerTable = (props: PlayerTableProps) => {
             <TableCell className={bingoColors[i]}>
               {BINGO_SPELL_CHARS[i]}
             </TableCell>
-            {cols.map((n) => (
-              <TableCell key={`${props.name}-${props.table.id}-cell-${n}`}>
-                {n === 0 ? <FaceSmileIcon className="h-10 w-10 mx-auto" /> : n}
-              </TableCell>
-            ))}
+            {cols.map((n) => {
+              if (n === 0) {
+                return (
+                  <TableCell key={`${props.name}-${props.table.id}-cell-${n}`}>
+                    <FaceSmileIcon className="h-10 w-10 mx-auto" />
+                  </TableCell>
+                );
+              } else {
+                return (
+                  <TableCell key={`${props.name}-${props.table.id}-cell-${n}`}>
+                    {props.crossedNumbers.includes(n) ? (
+                      <XMarkIcon className="h-10 w-10 mx-auto" />
+                    ) : (
+                      n
+                    )}
+                  </TableCell>
+                );
+              }
+            })}
           </TableCol>
         ))}
       </div>
